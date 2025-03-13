@@ -1,0 +1,13 @@
+package by.tms.dzenclone31onl;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DzenClone31OnlApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DzenClone31OnlApplication.class, args);
+    }
+
+}
