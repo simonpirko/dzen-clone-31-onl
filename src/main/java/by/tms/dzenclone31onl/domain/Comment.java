@@ -21,9 +21,11 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
     @ManyToOne
     @JoinColumn(name = "article_id", nullable = false)
     private Article article;
+
     @Column(nullable = false)
     private String content;
     @Column(nullable = false, updatable = false)
