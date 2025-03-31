@@ -7,6 +7,8 @@ import by.tms.dzenclone31onl.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ArticleService {
@@ -23,5 +25,9 @@ public class ArticleService {
                 .build();
 
         return articleRepository.save(article);
+    }
+
+    public List<Article> findByCategory(Long categoryId) {
+        return articleRepository.findByCategory(categoryId);
     }
 }

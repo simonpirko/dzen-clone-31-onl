@@ -31,6 +31,6 @@ public class CategoryController {
             return ResponseEntity.badRequest().body("Такая категория уже существует");
         }
         Category newCategory = categoryService.createCategory(name, description);
-        return ResponseEntity.ok(Map.of("message", "Категория добавлена"));
+        return ResponseEntity.ok(newCategory);
     }
 }
