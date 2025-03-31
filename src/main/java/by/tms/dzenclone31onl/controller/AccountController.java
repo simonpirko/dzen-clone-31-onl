@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/account")
 @RequiredArgsConstructor
 public class AccountController {
     private final UserService userService;
@@ -60,5 +60,13 @@ public class AccountController {
         String token = jwtToken.generateToken(userDetails.getUsername());
 
         return ResponseEntity.ok(Map.of("token", token));
+    }
+
+    @DeleteMapping("/delete/{username}")
+    public ResponseEntity<?> delete(@PathVariable("username") String username) {
+        if(userService.getUserByUsername(username).isEmpty())
+            return ResponseEntity.status(401).body("Пользователя с таким именем не найдено");
+        userService.getUserByUsername(username).ifPresent(u -> userService.deleteUser(u.getId()));
+        return ResponseEntity.ok("Пользователь успешно удалён");
     }
 }
