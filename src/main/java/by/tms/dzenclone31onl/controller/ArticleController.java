@@ -50,6 +50,6 @@ public class ArticleController {
         Category category1 = categoryOptional.get();
 
         Article article = articleService.create(title, content, category1, author);
-        return ResponseEntity.ok(Map.of("message", "Статья создана :)"));
+        return ResponseEntity.ok(article);
     }
 }
