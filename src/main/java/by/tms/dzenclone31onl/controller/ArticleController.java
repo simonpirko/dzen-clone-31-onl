@@ -9,11 +9,9 @@ import by.tms.dzenclone31onl.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -51,5 +49,11 @@ public class ArticleController {
 
         Article article = articleService.create(title, content, category1, author);
         return ResponseEntity.ok(article);
+    }
+
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<Article>> getArticlesByCategory(@PathVariable Long categoryId) {
+        List<Article> articles = articleService.findByCategory(categoryId);
+        return ResponseEntity.ok(articles);
     }
 }
