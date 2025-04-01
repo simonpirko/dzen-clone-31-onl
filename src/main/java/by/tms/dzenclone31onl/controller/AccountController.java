@@ -33,7 +33,7 @@ public class AccountController {
         }
 
         User user = userService.registerUser(username, email, password);
-        return ResponseEntity.ok("Пользователь зарегистрирован");
+        return ResponseEntity.ok(user.getId());
     }
 
     @PostMapping("/login")
