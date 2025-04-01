@@ -28,6 +28,10 @@ public class ArticleService {
     }
 
     public List<Article> findByCategory(Long categoryId) {
-        return articleRepository.findByCategory(categoryId);
+        return articleRepository.findByCategory_Id(categoryId);
+    }
+
+    public List<Long> searchArticles(String keyword) {
+        return articleRepository.findArticleId(keyword);
     }
 }
