@@ -56,4 +56,9 @@ public class ArticleController {
         List<Article> articles = articleService.findByCategory(categoryId);
         return ResponseEntity.ok(articles);
     }
+
+    @GetMapping("/search")
+    public List<Long> getAllArticles(@RequestParam String keyword) {
+        return articleService.searchArticles(keyword);
+    }
 }
